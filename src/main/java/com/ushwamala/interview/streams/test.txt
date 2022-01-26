@@ -1,0 +1,15 @@
+We can also use String as a source for creating a stream with the help of the chars() method of the String class. Since there is no interface for CharStream in JDK, we use the IntStream to represent a stream of chars instead.
+
+IntStream streamOfChars = "abc".chars();
+The following example breaks a String into sub-strings according to specified RegEx:
+
+Stream<String> streamOfString =
+  Pattern.compile(", ").splitAsStream("a, b, c");
+2.9. Stream of File
+Furthermore, Java NIO class Files allows us to generate a Stream<String> of a text file through the lines() method. Every line of the text becomes an element of the stream:
+
+Path path = Paths.get("C:\\file.txt");
+Stream<String> streamOfStrings = Files.lines(path);
+Stream<String> streamWithCharset = 
+  Files.lines(path, Charset.forName("UTF-8"));
+The Charset can be specified as an argument of the lines() 
